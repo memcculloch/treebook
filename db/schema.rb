@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611000847) do
+ActiveRecord::Schema.define(:version => 20130611004148) do
 
   create_table "statuses", :force => true do |t|
-    t.string   "contenttext"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.text     "content"
   end
 
   add_index "statuses", ["user_id"], :name => "index_statuses_on_user_id"
