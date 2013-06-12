@@ -19,11 +19,11 @@ class UserTest < ActiveSupport::TestCase
   	assert !user.errors[:profile_name].empty?
   end
 
-  test "a user should enter an email"  do
-  	user = User.new
-  	assert !user.save
-  	assert !user.errors[:email].empty?
-  end
+	test "a user should enter an email"  do
+		user = User.new
+		assert !user.save
+		assert !user.errors[:email].empty?
+	end
 
   test "a user should have a unique profile name" do
   	user = User.new
