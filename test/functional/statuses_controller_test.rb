@@ -11,7 +11,12 @@ class StatusesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:statuses)
   end
 
-  test "should be redirected when not logged in" do
+  test "should show status" do
+    get :show, id: @status
+    assert_response :success
+  end
+
+  test "should be logged in to render new page" do
     get :new
     assert_response :redirect
     assert_redirected_to new_user_session_path
@@ -23,7 +28,14 @@ class StatusesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create status" do
+  test "should be logged in to post a status" do
+    post :create, status: { content: "Hello"}
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should create status when logged in" do
+    sign_in users(:testuser)
     assert_difference('Status.count') do
       post :create, status: { content: @status.content }
     end
@@ -31,22 +43,40 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to status_path(assigns(:status))
   end
 
-  test "should show status" do
-    get :show, id: @status
-    assert_response :success
+
+  test "should be logged in to render edit page" do
+    get :edit, id: @status
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
   end
 
-  test "should get edit" do
+  test "should render the edit page when logged in" do
+    sign_in users(:testuser)
     get :edit, id: @status
     assert_response :success
   end
 
-  test "should update status" do
+  test "should be logged in to update status" do
+    put :update, id: @status, status: { content: @status.content }
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should update status when logged in" do
+    sign_in users(:testuser)
     put :update, id: @status, status: { content: @status.content }
     assert_redirected_to status_path(assigns(:status))
   end
 
-  test "should destroy status" do
+  test "should be logged in to destroy status" do
+    delete :destroy, id: @status
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should destroy status when logged in" do
+    sign_in users(:testuser)
+
     assert_difference('Status.count', -1) do
       delete :destroy, id: @status
     end
