@@ -43,7 +43,6 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to status_path(assigns(:status))
   end
 
-
   test "should be logged in to render edit page" do
     get :edit, id: @status
     assert_response :redirect
