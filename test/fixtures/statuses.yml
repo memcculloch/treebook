@@ -5,5 +5,13 @@ one:
   user: testuser
 
 two:
-  content: MyText
+  content: MyText2
   user: testuser
+
+three:
+  content: AnotherText
+  user: testuser2
+
+four:
+  content: AnotherText2
+  user: testuser2

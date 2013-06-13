@@ -2,4 +2,10 @@ testuser:
   first_name: "test"
   last_name: "user"
   email: "test@user.com"
-  profile_name: "testuser"
+  profile_name: "test_user"
+
+testuser2:
+  first_name: "test2"
+  last_name: "user2"
+  email: "test2@user.com"
+  profile_name: "test_user2"
